@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full pb-20">
+        <div class="w-full pb-20 px-9">
             <div class="w-full text-3xl font-bold pt-4 pb-8 flex justify-start items-center">
                 <TerrariumPot />
                 Your Terrariums
