@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-image h-[12rem] w-[20rem] rounded-[1.875rem] text-white flex items-end pb-1">
+    <div class="bg-image h-[12rem] min-h-[12rem] w-[20rem] min-w-[20rem] rounded-[1.875rem] text-white flex items-end pb-1">
         <div class="px-4">
             <p class="text-[1.5rem] font-bold">Show Off Your Terrarium</p>
             <p class="text-[0.90rem] font-light leading-5">Share your unique terrarium designs with the community!</p>

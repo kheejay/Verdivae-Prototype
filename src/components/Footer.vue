@@ -2,7 +2,7 @@
     <footer class="w-screen h-fit bg-c1"> 
         <div class="flex p-8 justify-between w-full">
             <div class="flex">
-                <MascotLogo class="h-[8rem] " />
+                <MascotLogo class="w-[7rem] min-w-[7rem]" />
                 <div>
                     <LogoAsName class="h-[4rem] mt-2.5 w-max"/>
                     <p class="text-xl w-full text-center">TAGLINE</p>
