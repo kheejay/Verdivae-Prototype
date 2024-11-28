@@ -92,12 +92,12 @@ onMounted(() => {
       })
       .catch((error) => {
         console.error('Error accessing media devices:', error);
-        alert(`Error accessing media devices: ${error.message}`);
       });
   } else {
     alert('getUserMedia is not supported in this browser.');
   }
 });
+
 
 
 const openCam = () => {
