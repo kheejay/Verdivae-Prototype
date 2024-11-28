@@ -83,7 +83,11 @@ const videoRef = ref(null);
 
 onMounted(() => {
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: true })
+    navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: { exact: 'environment' }, // Use rear camera by default
+      },
+    })
       .then((stream) => {
         if (videoRef.value) {
           videoRef.value.srcObject = stream;
@@ -92,11 +96,24 @@ onMounted(() => {
       })
       .catch((error) => {
         console.error('Error accessing media devices:', error);
+
+        // Fallback to default camera if rear camera is not available
+        if (error.name === 'OverconstrainedError') {
+          navigator.mediaDevices.getUserMedia({ video: true })
+            .then((fallbackStream) => {
+              if (videoRef.value) {
+                videoRef.value.srcObject = fallbackStream;
+                videoRef.value.play();
+              }
+            })
+            .catch(console.error);
+        }
       });
   } else {
     alert('getUserMedia is not supported in this browser.');
   }
 });
+
 
 
 
