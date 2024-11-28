@@ -1,7 +1,16 @@
 <template>
     <div class="w-full h-fit px-2 lg:px-9">
+        <div class="w-full h-max mt-8 xl:pr-20 flex justify-end">
+            <button @mouseover="lionPawWhite = true" @mouseleave="lionPawWhite = false"
+                @click="handleGotoPurchase" 
+                class="border-[0.2rem] border-black py-2 px-10 text-[1.5rem] rounded-[0.55rem] font-bold flex items-center justify-center gap-4 hover:bg-zinc-900 hover:text-white active:scale-105 duration-200">
+                <LionPaw v-if="!lionPawWhite" class="w-[1.5rem] h-[1.5rem]" />
+                <LionPawWhite v-else class="w-[1.5rem] h-[1.5rem]" />
+                Purchase
+            </button>
+        </div>
         <div class="w-full">
-            <div class="w-full text-3xl font-bold pt-12 pb-8 flex justify-start items-center">
+            <div class="w-full text-3xl font-bold pt-8 pb-8 flex justify-start items-center">
                 <CatPaw class="w-[3.5rem] mr-2.5" />
                 Your Animals
             </div>
@@ -72,4 +81,17 @@ import Behavior1 from '../components/Terrarium/Behavior1.vue'
 import Behavior2 from '../components/Terrarium/Behavior2.vue'
 import Behavior3 from '../components/Terrarium/Behavior3.vue'
 import Behavior4 from '../components/Terrarium/Behavior4.vue'
+import LionPaw from '../components/icons/LionPaw.vue'
+import LionPawWhite from '../components/icons/LionPawWhite.vue'
+import { ref } from 'vue'
+import { useDebounceFn } from '@vueuse/core'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const lionPawWhite = ref(false)
+
+const handleGotoPurchase = useDebounceFn(() => {
+    router.push({ name: 'Purchase' })
+}, 150)
 </script>

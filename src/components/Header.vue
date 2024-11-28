@@ -1,10 +1,10 @@
 <template>
-    <header class="w-screen h-fit border sticky top-0 bg-white p-4 flex justify-end lg:justify-between z-[2]">
+    <header class="w-screen h-fit border sticky top-0 left-0 bg-white p-4 flex justify-end lg:justify-between z-[2]">
         <div class="gap-0 hidden lg:flex">
             <MascotLogo class="h-[6rem]" />
             <LogoAsName class="h-[6rem] -translate-x-8" />
         </div>
-        <div class="flex w-full lg:w-max items-center gap-2.5 lg:gap-6 lg:pr-2.5">
+        <div class="flex w-full lg:w-max items-center gap-2.5 lg:gap-6 lg:pr-6">
             <input type="text" class="flex-grow h-[3rem] lg:h-[3.5rem] min-w-[5rem] rounded-full lg:text-green-900 border-2 lg:border-0 border-[#73cb54] bg-c1 lg:bg-empty focus:outline-none text-[1.5rem] py-4 px-4 lg:px-8 text-white placeholder:text-xl" placeholder="Search">
             <NoProfile @click="$router.push({ name: 'Profile' })" class="h-[3rem] lg:h-[3.5rem] w-[3rem] lg:w-[3.5rem] min-w-[3.5rem] cursor-pointer active:scale-95 duration-200" />
             <Burger @click="showSideBar" class="hidden lg:block cursor-pointer active:scale-95 duration-200 h-[3rem]" />
