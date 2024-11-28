@@ -8,7 +8,7 @@
             <source src="/src/assets/tiger.mp4" type="video/mp4" />
         </video>
         <video v-show="infoIndex === 2" width="200" loop autoplay class="lg:w-[30rem] w-full h-auto">
-                source src="/src/assets/butterflies.mp4" type="video/mp4" />
+            <source src="/src/assets/butterflies.mp4" type="video/mp4" />
         </video>
         <div class="w-full text-center text-2xl font-bold py-4">
             Php {{ infoIndex == 0 ? '19.00' : infoIndex == 1 ? '25.50' : '7.00' }}
