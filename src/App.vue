@@ -11,17 +11,17 @@
 		<Footer class="hidden lg:block" />
 		<FooterMobile class="lg:hidden" />
 	</TransitionGroup>
-	<Camera v-if="onCam" :resolution="resolution" autoplay
-      style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; background-color: green;">
-	  <div class="w-screen h-screen z-[2] bg-image fixed top-0 left-0">
-		  <div class="absolute bottom-[1.5rem] left-[4.5rem]">
-			  <div v-if="preLoad" class="w-max h-max left-1/2 transform -translate-x-1/2 top-[0.25rem] absolute flex items-center justify-center">
-				  <img src="/src/assets/images/propeller.png" alt="" class="w-[7rem] h-auto opacity-100 animate-spin">
-			  </div>
-			  <EarthButton @click="preLoadExit" class="w-[1.5rem] scale-[500%] active:scale-[700%] duration-200 " />
-		  </div>
-	  </div>
-	</Camera>
+	<video v-show="onCam" autoplay ref="videoRef"
+      style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover;">
+	</video>
+	<div v-if="onCam" class="w-screen h-screen z-[2] bg-image fixed top-0 left-0">
+		<div class="absolute bottom-[1.5rem] left-[4.5rem]">
+			<div v-if="preLoad" class="w-max h-max left-1/2 transform -translate-x-1/2 top-[0.25rem] absolute flex items-center justify-center">
+				<img src="/src/assets/images/propeller.png" alt="" class="w-[7rem] h-auto opacity-100 animate-spin">
+			</div>
+			<EarthButton @click="preLoadExit" class="w-[1.5rem] scale-[500%] active:scale-[700%] duration-200 " />
+		</div>
+	</div>
 	<Transition 
 		enter-active-class="transition-opacity ease-out duration-300" 
 		enter-from-class="opacity-0" 
@@ -53,12 +53,9 @@
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 import FooterMobile from './components/FooterMobile.vue';
-import { provide, ref } from 'vue';
-import Camera from "simple-vue-camera";
+import { onMounted, provide, ref } from 'vue';
 import EarthButton from './components/EarthButton.vue';
 import { useDebounceFn } from '@vueuse/core';
-
-const resolution = ref({ width: 420, height: 980 });
 
 const onCam = ref(false)
 const readyOpen = ref(false)
@@ -81,6 +78,27 @@ const userAliases = ref([
   "FloraFuser",
   "FaunaForge"
 ])
+
+const videoRef = ref(null);
+
+onMounted(() => {
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then((stream) => {
+        if (videoRef.value) {
+          videoRef.value.srcObject = stream;
+          videoRef.value.play();
+        }
+      })
+      .catch((error) => {
+        console.error('Error accessing media devices:', error);
+        alert(`Error accessing media devices: ${error.message}`);
+      });
+  } else {
+    alert('getUserMedia is not supported in this browser.');
+  }
+});
+
 
 const openCam = () => {
 	messagePrefix.value = 'Welcome back'
