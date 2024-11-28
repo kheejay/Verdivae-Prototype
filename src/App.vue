@@ -58,7 +58,7 @@ import Camera from "simple-vue-camera";
 import EarthButton from './components/EarthButton.vue';
 import { useDebounceFn } from '@vueuse/core';
 
-const resolution = ref({ width: window.innerWidth, height: window.innerHeight });
+const resolution = ref({ width: 320, height: 1920 });
 
 const onCam = ref(false)
 const readyOpen = ref(false)
