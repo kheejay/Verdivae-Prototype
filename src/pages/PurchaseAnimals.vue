@@ -11,7 +11,7 @@
             <source src="/src/assets/butterflies.mp4" type="video/mp4" />
         </video>
         <div class="w-full text-center text-2xl font-bold py-4">
-            Php {{ infoIndex == 0 ? '19.00' : infoIndex == 1 ? '25.50' : '7.00' }}
+            Php {{ infoIndex == 0 ? '129.00' : infoIndex == 1 ? '175.50' : '57.00' }}
         </div>
         <div class="w-full flex justify-center items-center gap-8 lg:gap-0">
             <ArrowLeft @click="previous" :class="`w-[2.5rem] h-auto hover:scale-125 active:scale-125 duration-200 lg:mx-[4rem] ${ infoIndex <= 0 && 'text-zinc-100' }`" />

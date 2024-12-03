@@ -4,7 +4,7 @@
             <div class="w-full text-start text-2xl sm:text-3xl font-bold pt-8 sm:pt-12 pb-4 sm:pb-8 text-green-900">
                 HOME
             </div>
-            <div class="flex justify-center gap-2 sm:gap-8 overflow-x-scroll no-scrollbar pl-8">
+            <div class="flex justify-start gap-2 sm:gap-8 overflow-x-auto w-full no-scrollbar">
                 <HomeGenericCards v-for="x, index in 4" :key="index" />
             </div>
         </div>
@@ -12,7 +12,7 @@
             <div class="w-full text-start text-2xl sm:text-3xl font-bold pt-8 sm:pt-12 pb-4 sm:pb-8 text-green-900">
                 Recent Updates
             </div>
-            <div class="flex justify-center gap-2 overflow-x-scroll no-scrollbar">
+            <div class="flex justify-start gap-2 overflow-x-auto w-full no-scrollbar">
                 <HomeRecentUpdatesCard1 />
                 <HomeRecentUpdatesCard2 />
                 <HomeRecentUpdatesCard1 />
@@ -23,7 +23,7 @@
             <div class="w-full text-start text-2xl sm:text-3xl font-bold pt-8 sm:pt-12 pb-4 sm:pb-8 text-green-900">
                 Trending
             </div>
-            <div class="flex justify-center gap-2 overflow-x-scroll no-scrollbar">
+            <div class="flex justify-start gap-2 overflow-x-scroll no-scrollbar">
                 <HomeTrendingCard1 /> 
                 <HomeTrendingCard2 />
                 <HomeTrendingCard1 />
